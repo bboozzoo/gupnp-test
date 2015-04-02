@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+
+  <device>
+    <deviceType>urn:schemas-upnp-org:device:ManageableDevice:1</deviceType>
+    <friendlyName>Test device</friendlyName>
+    <manufacturer>Zed</manufacturer>
+    <modelName>Sink</modelName>
+    <UDN>uuid:1a6c9157-162a-4787-b5cf-4b91be2cc454</UDN>
+
+    <!-- web page with some UI, possibly redirect to actual
+         configuration WebUI -->
+    <presentationURL>/config</presentationURL>
+  </device>
+</root>

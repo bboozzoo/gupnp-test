@@ -4,14 +4,16 @@ A test implementation of a UPnP device. Uses a trimmed down version of
 _2.1 Device Description_ from _UPnP Device Architecture v1.0_ document.
 
 The device provides no services, but a single presentation URL. Once
-the presentation URL is accessed by a HTTP client, a redirect will be
-made to another URL.
+the presentation URL is accessed by a HTTP client, a nice 'Hello'
+message will be shown.
 
-This mimicks a real use case, when the UPnP advertisment daemon does
-not handle the presentation. However, since the URL included in
-`device.xml` is relative, the client will attempt to access it using
-the `Location` header found in SSDP messages. An example message
-broadcast by GUPnP looks like this:
+## Redirect to another location
+
+A real life use case, when the UPnP advertisment daemon does not
+handle the presentation. Since the URL included in `device.xml` is
+relative, the client will attempt to access it using the `Location`
+header found in SSDP messages. An example message broadcast by GUPnP
+looks like this:
 
     NOTIFY * HTTP/1.1
     Host: 239.255.255.250:1900
@@ -24,4 +26,5 @@ broadcast by GUPnP looks like this:
 
 When a client performs **GET** request to
 http://192.168.1.136:55016/config a redirect to a predefined URL
-(hardcoded in `_handle_config` callback) will be made.
+(hardcoded in `_handle_config` callback - check the code) will be
+made.

@@ -17,10 +17,8 @@
 # 02110-1301, USA.
 """A demo program implementing a use case in which control points can
 discover a simple service-less device. In this case the device
-provides only presentation URL that the contron point can provide to
-the user for accessing via a web browser. The device UPnP interface
-does not provide the presentation URL directl but rather redirects the
-HTTP query to a different URL.
+provides only presentation URL that the control point can provide to
+the user for accessing via a web browser.
 """
 
 

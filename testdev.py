@@ -42,12 +42,26 @@ def _handle_config(server, message, path, query, client, user_param):
     logging.debug('handle URI: %s', path)
     logging.debug('address: %s', message.get_address().get_name())
 
-    address = message.get_address().get_name()
+    # use the code below to redirect the client to a different
+    # location, but still within the same host
 
-    # redirect to the same location, but port 80, /someurl
-    redirect_url = 'http://{address}/someurl'.format(address=address)
+    # Example: redirect to the same location, but port 80, /someurl
 
-    message.set_redirect(Soup.Status.FOUND, redirect_url)
+    # address = message.get_address().get_name()
+    # redirect_url = 'http://{address}/someurl'.format(address=address)
+    # message.set_redirect(Soup.Status.FOUND, redirect_url)
+
+    # Or just print out a nice response
+    response = """Hello!
+
+This is an example response. You might want to redirect the client
+to anoter location or implement a nice web page right here.
+    """
+
+    message.set_response("text/plain",
+                         Soup.MemoryUse.COPY,
+                         response)
+    message.set_status(Soup.Status.OK)
 
 
 def _find_presentation_url(device_xml):

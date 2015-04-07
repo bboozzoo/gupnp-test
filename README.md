@@ -7,9 +7,51 @@ The device provides no services, but a single presentation URL. Once
 the presentation URL is accessed by a HTTP client, a nice 'Hello'
 message will be shown.
 
+## Dependencies
+
+- GUPnP
+- glib
+
+## Running
+
+For Python version:
+
+    ./testdev.py
+
+For vala version:
+
+    valac testdev.vala --pkg gupnp-1.0
+    ./testdev
+
+In either case, the log output will contain a line looking like this:
+
+    (Vala)
+    ...
+    ** Message: testdev.vala:118: location address: http://192.168.1.136:58000
+    ...
+
+    (Python)
+    ...
+    DEBUG:root:location address http://192.168.1.136:49724
+    ...
+
+Make a curl request to `http://<address>/config` like this:
+
+    user@host:~/code/upnp: curl http://192.168.1.136:58000/config -D -
+    HTTP/1.1 200 OK
+    Date: Tue, 07 Apr 2015 20:49:24 GMT
+    Content-Type: text/plain
+    Content-Length: 135
+
+    Hello!
+
+    This is an example response. You might want to redirect the client
+    to anoter location or implement a nice web page right here.
+    user@host:~/code/upnp:
+
 ## Redirect to another location
 
-A real life use case, when the UPnP advertisment daemon does not
+A real life use case, when the UPnP advertisement daemon does not
 handle the presentation. Since the URL included in `device.xml` is
 relative, the client will attempt to access it using the `Location`
 header found in SSDP messages. An example message broadcast by GUPnP
